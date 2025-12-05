@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CampusConnect+ Events</title>
+  <!-- Reuse your main CSS -->
+  <link rel="stylesheet" href="./finalweb.css">
+</head>
+<body>
+  <!-- Navigation bar copied from finalweb.html -->
+  <nav>
+    <div class="logo">
+      <a href="./finalweb.html">
+        <img src="./campusconnect.png" alt="CampusConnect+ logo" width="50" height="50">
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="./events.html" class="active">Events</a>
+      <a href="./favorites.html">Favorites</a>
+      <a href="./loginpage.html">Login</a>
+      <a href="./signupage.html">Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- Hero section reused -->
+  <div class="hero">
+    <div class="left-colum">
+      <h1>Campus Events</h1>
+      <p>Stay updated on everything happening around campus!</p>
+    </div>
+    <div class="right-colum">
+      <h2>Browse Events</h2>
+      <p>Use filters or search to find what interests you.</p>
+    </div>
+  </div>
+
+  <!-- Filters/Search -->
+  <section class="filters">
+    <input type="text" id="search" placeholder="Search events...">
+    <div class="category-filters">
+      <button class="chip" data-category="Academic">Academic</button>
+      <button class="chip" data-category="Sports">Sports</button>
+      <button class="chip" data-category="Social">Social</button>
+      <button class="chip" data-category="Arts">Arts</button>
+      <button class="chip" data-category="Tech">Tech</button>
+    </div>
+    <select id="sort">
+      <option value="dateAsc">Sort by Date ↑</option>
+      <option value="dateDesc">Sort by Date ↓</option>
+    </select>
+  </section>
+
+  <!-- Events container -->
+  <main>
+    <div id="events" class="events-grid">
+      <!-- Event cards will be injected here by events.js -->
+    </div>
+  </main>
+
+  <!-- Modal for event details -->
+  <div id="eventModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDate"></p>
+      <p id="modalLocation"></p>
+      <p id="modalDescription"></p>
+      <button id="addFavoriteBtn" class="button">Add to Favorites</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./js/storage.js"></script>
+  <script src="./js/events.js"></script>
+</body>
+</html>

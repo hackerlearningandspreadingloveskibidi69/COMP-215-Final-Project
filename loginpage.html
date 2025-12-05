@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - CampusConnect+</title>
+  <link rel="stylesheet" href="./loginpage.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="./finalweb.html">
+        <img src="./campusconnect.png" alt="CampusConnect+ logo" width="200" height="200">
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="./events.html">Events</a>
+      <a href="./favorites.html">Favorites</a>
+      <a href="./loginpage.html" class="active">Login</a>
+      <a href="./signupage.html">Sign Up</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="form-container">
+      <img src="./groupimg.png" alt="Group illustration">
+      <h1>Login</h1>
+      <form onsubmit="return loginUser()">
+        <input type="text" id="login-name" class="input-box" placeholder="Your Name" required pattern="[A-Za-z ]{2,}" title="Name must be at least 2 characters and contain only letters.">
+        <input type="email" id="login-email" class="input-box" placeholder="Your Email" required>
+        
+        <div class="password-box">
+          <input type="password" id="login-pass" class="input-box" placeholder="Your Password" required>
+          <i class="ri-eye-off-line toggle-eye" onclick="togglePassword('login-pass', this)"></i>
+        </div>
+
+        <p class="tos-text">
+		  <input type="checkbox" id="login-remember"> Remember Me
+		</p>
+        <button type="submit" class="button">Login</button>
+        <hr>
+        <p class="or">OR</p>
+        <p>Don’t have an account? <a href="./signupage.html">Sign up today!</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function loginUser() {
+	  const name = document.getElementById('login-name').value;
+	  const email = document.getElementById('login-email').value;
+	  const pass = document.getElementById('login-pass').value;
+	  const rememberMe = document.getElementById('login-remember').checked;
+
+	  const storedName = localStorage.getItem("userName");
+	  const storedEmail = localStorage.getItem("userEmail");
+	  const storedPass = localStorage.getItem("userPass");
+
+	  // Guard clause: no account registered
+	  if (!storedName || !storedEmail || !storedPass) {
+		alert("No account found. Please register first.");
+		return false;
+	  }
+
+	  // Check credentials
+	  if (name === storedName && email === storedEmail && pass === storedPass) {
+		alert("Login successful! Welcome " + storedName + ".");
+
+		// If Remember Me checked, store login details separately
+		if (rememberMe) {
+		  localStorage.setItem("rememberName", name);
+		  localStorage.setItem("rememberEmail", email);
+		} else {
+		  localStorage.removeItem("rememberName");
+		  localStorage.removeItem("rememberEmail");
+		}
+
+		window.location.href = "./events.html";
+		return true;
+	  } else {
+		alert("Login failed. Please check your credentials.");
+		return false;
+	  }
+	}
+
+	window.onload = function() {
+	  const rememberedEmail = localStorage.getItem("rememberEmail");
+	  const rememberedPass = localStorage.getItem("rememberPass");
+
+	  if (rememberedEmail) document.getElementById('login-email').value = rememberedEmail;
+	  if (rememberedPass) document.getElementById('login-pass').value = rememberedPass;
+	};
+
+    function togglePassword(fieldId, iconElement) {
+      const input = document.getElementById(fieldId);
+      if (input.type === "password") {
+        input.type = "text";
+        iconElement.classList.remove("ri-eye-off-line");
+        iconElement.classList.add("ri-eye-line");
+      } else {
+        input.type = "password";
+        iconElement.classList.remove("ri-eye-line");
+        iconElement.classList.add("ri-eye-off-line");
+      }
+    }
+  </script>
+</body>
+</html>

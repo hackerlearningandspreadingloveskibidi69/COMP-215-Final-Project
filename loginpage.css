@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Navigation bar (same as finalweb.css) */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: 100;
+    background-color: seagreen;
+    padding: 0rem calc((100vw - 1400px) / 2);
+}
+
+.logo {
+    margin-left: 2rem;
+}
+
+.nav-links {
+    margin-right: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    padding: 0rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: yellow;
+}
+
+/* Hero background reused */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(-45deg, #6ee7b7, #3b82f6, #9333ea, #f59e0b);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    padding-top: 100px; /* offset for fixed nav */
+}
+
+/* Animated gradient background */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Login form container */
+.form-container {
+    background: rgba(255,255,255,0.95);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    animation: fadeInUp 1.2s ease forwards;
+    opacity: 0;
+}
+
+.form-container h1 {
+    color: #2563eb;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.form-container img {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+/* Inputs */
+.input-box {
+    border-radius: 25px;
+    padding: 12px;
+    margin: 10px 0;
+    width: 90%;              /* all inputs same width */
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;  /* ensures padding doesn't change total width */
+}
+
+.input-box:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 8px rgba(37,99,235,0.4);
+}
+
+/* Button */
+.button {
+    display: inline-block;
+    color: white;
+    background: #2563eb;
+    margin-top: 20px;
+    padding: 12px 80px;
+    border-radius: 25px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #1e40af;
+    box-shadow: 0 0 15px rgba(37,99,235,0.6);
+}
+
+/* Terms text */
+.tos-text {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 20px 0 10px;   /* more space above, consistent spacing below */
+  text-align: left;
+}
+
+/* Divider */
+hr {
+    margin: 25px auto;
+    width: 80%;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.or {
+    background: white;
+    width: 40px;
+    margin: -20px auto 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Password field wrapper */
+.password-box {
+    position: relative;
+    width: 90%;              /* match .input-box width */
+    margin: 10px auto;       /* same spacing as other inputs */
+}
+
+/* Password input inside wrapper */
+.password-box .input-box {
+    width: 100%;             /* fill wrapper */
+    padding-right: 40px;     /* space for the icon */
+    margin: 0;               /* wrapper controls spacing */
+}
+
+/* Eye icon styling */
+.toggle-eye {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    font-size: 1.2rem;
+}

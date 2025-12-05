@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - CampusConnect+</title>
+  <link rel="stylesheet" href="./signupage.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="./finalweb.html">
+        <img src="./campusconnect.png" alt="CampusConnect+ logo" width="200" height="200">
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="./events.html">Events</a>
+      <a href="./favorites.html">Favorites</a>
+      <a href="./loginpage.html">Login</a>
+      <a href="./signupage.html" class="active">Sign Up</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="form-container">
+      <h1>Create Your Account</h1>
+      <form onsubmit="return registerUser()">
+		  <input type="text" id="signup-name" class="input-box" placeholder="Your Name" required>
+		  <input type="email" id="signup-email" class="input-box" placeholder="Your Email" required>
+
+		  <div class="password-box">
+			<input type="password" id="signup-pass" class="input-box" 
+				   placeholder="Create Password" 
+				   required 
+				   pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]).{8,}" 
+				   title="Password must be at least 8 characters, include uppercase, lowercase, number, and special character.">
+			<i class="ri-eye-off-line toggle-eye" onclick="togglePassword('signup-pass', this)"></i>
+		  </div>
+
+		  <div class="password-box">
+			<input type="password" id="signup-confirm" class="input-box" placeholder="Confirm Password" required>
+			<i class="ri-eye-off-line toggle-eye" onclick="togglePassword('signup-confirm', this)"></i>
+		  </div>
+
+		  <p class="tos-text">
+			<input type="checkbox" id="signup-tos" required> I agree to the terms of service
+		  </p>
+		  <button type="submit" class="button">Sign Up</button>
+		  <hr>
+			<p class="or">OR</p>
+			<p>Already have an account? <a href="./loginpage.html">Login</a></p>
+	</form>
+
+    </div>
+  </div>
+
+  <script>
+    function registerUser() {
+	  const name = document.getElementById('signup-name').value;
+	  const email = document.getElementById('signup-email').value;
+	  const pass = document.getElementById('signup-pass').value;
+	  const confirm = document.getElementById('signup-confirm').value;
+	  const tosChecked = document.getElementById('signup-tos').checked;
+
+	  if (pass !== confirm) {
+		alert("Passwords do not match!");
+		return false;
+	  }
+
+	  if (!tosChecked) {
+		alert("You must agree to the terms of service before registering.");
+		return false;
+	  }
+
+		// Check if email already exists
+	  const storedEmail = localStorage.getItem("userEmail");
+	  if (storedEmail && storedEmail === email) {
+		alert("This email is already registered. Please log in instead.");
+		return false;
+	  }
+	  
+	  // Save credentials in localStorage
+	  localStorage.setItem("userName", name);
+	  localStorage.setItem("userEmail", email);
+	  localStorage.setItem("userPass", pass);
+
+	  alert("Registration successful! You can now log in.");
+	  return true;
+	}
+
+	function togglePassword(fieldId, iconElement) {
+	  const input = document.getElementById(fieldId);
+	  if (input.type === "password") {
+		input.type = "text";
+		iconElement.classList.remove("ri-eye-off-line");
+		iconElement.classList.add("ri-eye-line");
+	  } else {
+		input.type = "password";
+		iconElement.classList.remove("ri-eye-line");
+		iconElement.classList.add("ri-eye-off-line");
+	  }
+	}
+  </script>
+</body>
+</html>
