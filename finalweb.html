@@ -1,42 +1,61 @@
 <!DOCTYPE html>
-
 <html>
+<head>
+  <title>Final Css Website</title>
+  <link rel="stylesheet" type="text/css" href="finalweb.css">
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="./finalweb.html"><img src="./campusconnect.png" alt="Campus Connect" width="200" height="200"></a>
+    </div>
+    <div class="nav-links">
+      <a href="./events.html">Events</a>
+      <a href="./favorites.html">Favorites</a>
+      <a href="./loginpage.html">Login</a>
+      <a href="./signupage.html">Sign Up</a>
+    </div>
+  </nav>
 
+  <div class="hero">
+    <div class="left-colum">
+      <h1>Campus Portal</h1>
+      <p>Updating you on everything happening on campus!</p>
+      <button type="button" onclick="window.location.href='./signupage.html'">Sign Up!</button>
+    </div>
+    <div class="right-colum">
+      <h1>Events</h1>
+      <p>Latest Events:</p>
+      <div id="events-preview"></div>
+    </div>
+  </div>
 
-	<head>
-	<title>Final Css Website</title>
-	<link rel="stylesheet" type="text/css" href="finalweb.css">
-	</head>
-	
-	<body>
-	 <nav>
-	  <div class="logo">
-	   <a href="./finalweb.html"><img src="./campusconnect.png" alt="testimage" width="200px" height="200px"></a>
-	  </div>
-	  
-	  <div class="nav-links">
-	   <a href="/">Events</a> <a href="/">Favorites</a> <a href="./loginpage.html">Login</a> <a href="./signupage.html">Sign Up</a>
-	  </div>
-	 </nav>
-	 
-	 
-	 <div class="hero">
-	  <div class="left-colum">
-	   <h1>Campus Portal</h1>
-	   <p>
-	   Updating you on everything happening on campus!
-	   </p>
-	   <button type="button" onclick="window.location.href='./signupage.html'">Sign Up!</button>
-	  </div>
-	  <div class="right-colum">
-		<h1>Events</h1>
-		<p>
-			Latest Events:
-		</p>
-		<!--This will be for events but i cant think of ideas so im leaving it for later-->
-	  </div>
-	 </div>
-	 
-	</body>
+  <footer>
+    <p>&copy; 2025 Campus Connect. All rights reserved.</p>
+    <p><a href="profile.html">Profile</a> | <a href="contact.html">Contact Us</a></p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function() {
+      $.getJSON("data/events.json")
+        .done(function(data) {
+          const preview = data.slice(0, 2);
+          preview.forEach(event => {
+            $("#events-preview").append(`
+              <div class="event-card">
+                <img src="${event.image || 'default.jpg'}" alt="${event.title}" width="150">
+                <h3>${event.title}</h3>
+                <p>${event.date} @ ${event.location}</p>
+                <a href="events.html">See more</a>
+              </div>
+            `);
+          });
+        })
+        .fail(function() {
+          $("#events-preview").html("<p>Could not load events.</p>");
+        });
+    });
+  </script>
+</body>
 </html>
-
