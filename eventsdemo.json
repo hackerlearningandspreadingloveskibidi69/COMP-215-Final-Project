@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Campus Hackathon 2025",
+    "category": "Tech",
+    "date": "2025-12-10",
+    "location": "Innovation Lab",
+    "image": "hackathon.jpg",
+    "description": "A 24-hour coding challenge with prizes for the most creative solutions.",
+    "tags": ["coding", "teamwork", "innovation"]
+  },
+  {
+    "id": 2,
+    "title": "Winter Gala",
+    "category": "Social",
+    "date": "2025-12-15",
+    "location": "Student Center Ballroom",
+    "image": "gala.jpg",
+    "description": "Formal dinner and dance to celebrate the semester.",
+    "tags": ["music", "dance", "community"]
+  },
+  {
+    "id": 3,
+    "title": "Basketball Championship",
+    "category": "Sports",
+    "date": "2025-12-20",
+    "location": "Campus Gym",
+    "image": "basketball.jpg",
+    "description": "Cheer on the varsity team in the finals!",
+    "tags": ["sports", "team", "competition"]
+  },
+  {
+    "id": 4,
+    "title": "Guest Lecture: AI in Business",
+    "category": "Academic",
+    "date": "2026-01-05",
+    "location": "Main Auditorium",
+    "image": "lecture.jpg",
+    "description": "Industry expert discusses the future of AI in business management.",
+    "tags": ["lecture", "business", "technology"]
+  },
+  {
+    "id": 5,
+    "title": "Art Exhibition: Student Showcase",
+    "category": "Arts",
+    "date": "2026-01-12",
+    "location": "Fine Arts Gallery",
+    "image": "art.jpg",
+    "description": "Explore paintings, sculptures, and digital art created by students.",
+    "tags": ["art", "gallery", "creative"]
+  },
+  {
+    "id": 6,
+    "title": "Career Fair 2026",
+    "category": "Academic",
+    "date": "2026-01-20",
+    "location": "Conference Hall",
+    "image": "career.jpg",
+    "description": "Meet recruiters from top companies and explore internship opportunities.",
+    "tags": ["career", "jobs", "networking"]
+  },
+  {
+    "id": 7,
+    "title": "Spring Concert",
+    "category": "Arts",
+    "date": "2026-02-01",
+    "location": "Outdoor Stage",
+    "image": "concert.jpg",
+    "description": "Live performances by campus bands and choirs.",
+    "tags": ["music", "concert", "festival"]
+  },
+  {
+    "id": 8,
+    "title": "Coding Bootcamp",
+    "category": "Tech",
+    "date": "2026-02-10",
+    "location": "Computer Lab",
+    "image": "bootcamp.jpg",
+    "description": "Hands-on workshop to learn web development basics.",
+    "tags": ["coding", "workshop", "web"]
+  },
+  {
+    "id": 9,
+    "title": "Soccer Friendly Match",
+    "category": "Sports",
+    "date": "2026-02-15",
+    "location": "Campus Field",
+    "image": "soccer.jpg",
+    "description": "Friendly match between students and faculty.",
+    "tags": ["soccer", "sports", "fun"]
+  },
+  {
+    "id": 10,
+    "title": "Debate Competition",
+    "category": "Academic",
+    "date": "2026-02-20",
+    "location": "Lecture Hall B",
+    "image": "debate.jpg",
+    "description": "Teams compete on current issues in a formal debate format.",
+    "tags": ["debate", "academic", "competition"]
+  }
+]
