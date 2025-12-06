@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Final Css Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="finalweb.css">
 </head>
 <body>
@@ -17,25 +21,159 @@
     </div>
   </nav>
 
-  <div class="hero">
-    <div class="left-colum">
-      <h1>Campus Portal</h1>
-      <p>Updating you on everything happening on campus!</p>
-      <button type="button" onclick="window.location.href='./signupage.html'">Sign Up!</button>
+  <main>
+    <div class="hero">
+      <div class="left-column">
+        <h1>Campus Portal</h1>
+        <p>Updating you on everything happening on campus!</p>
+        <button type="button" onclick="window.location.href='./signupage.html'">Sign Up!</button>
+      </div>
+      <div class="right-column">
+        <h1>Events</h1>
+        <p>Latest Events:</p>
+        <div id="events-preview"></div>
+      </div>
     </div>
-    <div class="right-colum">
-      <h1>Events</h1>
-      <p>Latest Events:</p>
-      <div id="events-preview"></div>
-    </div>
-  </div>
+  </main>
 
-  <footer>
-    <p>&copy; 2025 Campus Connect. All rights reserved.</p>
-    <p><a href="profile.html">Profile</a> | <a href="contact.html">Contact Us</a></p>
+  <footer class="footer">
+
+    <div class="section footer-top">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="school1.png" width="150" height="73" loading="lazy" alt="Unigine logo">
+          </a>
+
+          <p class="footer-text">
+            Our success in providing entertainment solutions is due in large part to our talented and highly committed team.
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-list">
+
+          <p class="title footer-list-title has-after">Useful Links</p>
+
+          <ul>
+
+            <li>
+              <a href="#" class="footer-link">Tournaments</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Help Center</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Privacy Policy</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Terms of Use</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Contact Us</a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-list">
+
+          <p class="title footer-list-title has-after">Contact Us</p>
+
+          <div class="contact-item">
+            <span class="span">Location:</span>
+
+            <address class="contact-link">
+              Neon Nexus Boulevard, Cyber Citadel District, Virtual Vista County, City of Infinite Adventure
+            </address>
+          </div>
+
+          <div class="contact-item">
+            <span class="span">Join Us:</span>
+
+            <a href="mailto:Info@unigine.com" class="contact-link">gamergangs@RPGWorld.com</a>
+          </div>
+
+          <div class="contact-item">
+            <span class="span">Phone:</span>
+
+            <a href="tel:+12345678910" class="contact-link">+84 391 827 182</a>
+          </div>
+
+        </div>
+
+        <div class="footer-list">
+
+          <p class="title footer-list-title has-after">Newsletter Signup</p>
+
+          <form action="./index.html" method="get" class="footer-form">
+            <input type="email" id="newsletter-email" class="input-field" placeholder="Your Email" required>
+            <button id="subscribe-btn" class="btn">Subscribe Now</button>
+            <p id="success-message" style="display:none; color: purple; margin-top: 1rem;">
+              Registered successfully!
+            </p>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2024 RPGWorld.com | All Rights Reserved.
+        </p>
+
+      </div>
+    </div>
+
   </footer>
 
+
+  <div class="cursor" data-cursor></div>
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- ionicon links -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
   <script>
     $(function() {
       $.getJSON("data/events.json")
@@ -44,7 +182,7 @@
           preview.forEach(event => {
             $("#events-preview").append(`
               <div class="event-card">
-                <img src="${event.image || 'default.jpg'}" alt="${event.title}" width="150">
+                <img src="${event.image || 'default.jpg'}" alt="${event.title}">
                 <h3>${event.title}</h3>
                 <p>${event.date} @ ${event.location}</p>
                 <a href="events.html">See more</a>
@@ -55,6 +193,27 @@
         .fail(function() {
           $("#events-preview").html("<p>Could not load events.</p>");
         });
+    });
+
+    document.getElementById("subscribe-btn").addEventListener("click", function() {
+      const emailInput = document.getElementById("newsletter-email");
+      const successMessage = document.getElementById("success-message");
+
+      if (emailInput.value.trim() !== "") {
+        successMessage.style.display = "block";   // show message
+        successMessage.style.opacity = "1";       // ensure visible
+        emailInput.value = "";                    // clear input
+
+        // Hide after 5 seconds
+        setTimeout(() => {
+          successMessage.style.opacity = "0";     // fade out
+          setTimeout(() => {
+            successMessage.style.display = "none"; // fully hide
+          }, 500); // wait for fade transition
+        }, 5000);
+      } else {
+        alert("Please enter a valid email address.");
+      }
     });
   </script>
 </body>
