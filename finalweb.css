@@ -1,38 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+:root {
+  /* Colors */
+  --bg-purple: hsla(267, 100%, 63%, 1);
+  --bg-purple-alpha-30: hsla(267, 100%, 63%, 0.3);
+  --bg-oxford-blue-alpha-90: hsla(240, 63%, 13%, 0.9);
+  --bg-oxford-blue-alpha-80: hsla(240, 63%, 13%, 0.8);
+
+  /* Text */
+  --text-white: #fff;
+  --text-purple: rgb(184, 0, 245);
+
+  /* Font sizes */
+  --fontSize-3: 2rem;
+  --fontSize-5: 1.6rem;
+  --fontSize-6: 1.5rem;
+  --fontSize-7: 1.4rem;
+
+  /* Font weight */
+  --weight-semiBold: 600;
+
+  /* Clip paths */
+  --clip-path-3: polygon(0% 0%, 90% 0, 100% 30%, 100% 100%, 0 100%);
+  --clip-path-8: polygon(0% 0%, 70% 0, 100% 30%, 100% 100%, 0 100%);
+
+  /* Gradient */
+  --gradient-1: linear-gradient(to right bottom,
+    hsl(299, 100%, 52%), hsl(291, 100%, 58%),
+    hsl(283, 100%, 60%), hsl(273, 100%, 62%),
+    hsl(262, 100%, 63%), hsl(242, 100%, 69%),
+    hsl(223, 100%, 62%), hsl(210, 100%, 50%),
+    hsl(203, 100%, 50%), hsl(198, 100%, 50%),
+    hsl(192, 100%, 48%), hsl(185, 90%, 48%)
+  );
+
+  /* Shadow + transitions */
+  --shadow: 0px 2px 5px rgba(0,0,0,0.2);
+  --transition-1: 250ms ease;
+  --transition-2: 500ms ease;
+}
 
 
 * {
-	
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* prevents horizontal scroll */
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+	flex: 1;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Keep default font for events search bar */
+.events-search input,
+.events-search {
+  font-family: Arial, sans-serif; /* or whatever fallback you prefer */
+}
+
+
+/* Navigation */
 nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	height: 100px;
-	position: fixed;
-	z-index: 100;
-	background: transparent;
-	background-color: seagreen;
-	padding: 0rem calc((100vw - 1400px) / 2);
-	
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: seagreen;
+  padding: 0 2rem;
 }
 
+.logo img {
+  height: 200px;
+}
 
-.logo {
-	margin-left: 2rem;
+.nav-links {
+  display: flex;
+  gap: 1rem;
 }
 
 .nav-links a {
   text-decoration: none;
   color: white;
-  padding: 0rem 1rem;
+  padding: 0.5rem 1rem;
   transition: color 0.3s ease;
 }
 
@@ -41,18 +110,20 @@ nav {
   color: yellow;
 }
 
+
+/* Hero Section */
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  min-height: 100vh;
   align-items: center;
+  justify-items: center; /* centers items horizontally in grid cells */
+  text-align: left;
   color: white;
   background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
-  padding: 0rem calc((100vw - 1400px) / 2);
-  overflow-x: hidden;
-  position: relative;
+  padding: 6rem 2rem 2rem; /* top padding accounts for fixed nav */
 }
 
 @keyframes gradientBG {
@@ -61,18 +132,17 @@ nav {
   100% { background-position: 0% 50%; }
 }
 
-
 .hero h1 {
-	padding-bottom: 1rem;
-	font-size: clamp(1rem, 14vw, 3rem);
-	text-transform: uppercase;
-	color: lightblue;
+  margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  text-transform: uppercase;
+  color: lightblue;
 }
 
-.hero p{
-	padding-bottom: 3rem;
-	font-size: clamp(1rem, 2vw, 3rem);
-	line-height: 1.5;
+.hero p {
+  margin-bottom: 2rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.5;
 }
 
 .left-column, .right-column {
@@ -85,17 +155,13 @@ nav {
   to { transform: translateY(0); opacity: 1; }
 }
 
-
 button {
-  padding: 1.2rem 3.5rem;
+  padding: 1rem 2.5rem;
   border-radius: 4px;
   border: none;
   font-size: 1.2rem;
-  margin-bottom: 3rem;
   color: white;
   background: blue;
-  outline: none;
-  z-index: 1;
   box-shadow: 0 0 10px rgba(0,0,255,0.6);
   transition: all 0.3s ease;
 }
@@ -106,46 +172,298 @@ button:hover {
   box-shadow: 0 0 20px rgba(0,0,255,0.9);
 }
 
-
-@media screen and (max-width: 768px) {
-	.hero {
-		grid-template-columns: 1fr;
-	}
+/* Event Cards */
+.event-card {
+  background: rgba(255,255,255,0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-#left {
-	float: left;
-	width: 210px;
-	border: dashed blue
+.event-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
 }
 
-#right {
-	float: right;
-	width: 200px;
-	border: dashed blue
-
+.event-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
 }
 
-#center {
-	margin-left: 218px; /* 218 works better, why? -----> Idk because it does (Prob math or something)*/
-	margin-right: 210px;
-	border: solid blue
-
+.event-card p {
+  margin-bottom: 0.5rem;
 }
 
-#top {
+/* Footer */
 
-	margin: 20px;
-	padding: 10px;
-	text-align: center;
-	background: #ccc;
+.footer {
+  background: linear-gradient(-45deg, #643e54, #d6d6de, #4ade80, #facc15);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: white;
+  padding: 4rem 2rem 2rem;
 }
 
-#footer {
-	background: #ccc;
-	margin: 200px;
-	text-align: center;
-	clear: both;
+.footer-top .container {
+  display: grid;
+  gap: 100px;
+}
+
+@media (min-width: 575px) {
+  .footer-top .container { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 992px) {
+  .footer-top .container { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1200px) {
+  .footer-top .container { grid-template-columns: 1f 0.5fr 0.5fr 1fr; }
+}
+
+.footer .logo img {
+  width: 205px;
+}
+
+.footer-text {
+  margin-block: 20px 25px;
+}
+
+.social-list {
+  display: flex;
+  gap: 10px;
+}
+
+.footer .social-link {
+  width: 40px;
+  height: 40px;
+  background-color: var(--bg-purple-alpha-30);
+  display: grid;
+  place-items: center;
+  clip-path: var(--clip-path-8);
+  transition: var(--transition-1);
+}
+
+.footer .social-link:is(:hover, :focus-visible) {
+  background-color: var(--bg-purple);
+  transform: translateY(-2px);
+}
+
+.footer-list-title {
+  font-size: 1.4rem;   /* smaller than before */
+  font-weight: var(--weight-semiBold, 600);
+  line-height: 1.2;
+  position: relative;
+  padding-bottom: 6px;
+  margin-bottom: 15px;
+  max-width: max-content;
+  color: var(--text-white);
+}
+
+.footer-list-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-purple);
+  border-radius: 2px;
+}
+
+.footer-link {
+  padding-block: 5px;
+  color: var(--text-white);
+  transition: var(--transition-1);
+}
+
+/* Center content only in the first footer column */
+.footer-top .container > :first-child {
+  text-align: center;
+}
+
+.footer-top .container > :first-child .logo img {
+  display: block;
+  margin-inline: auto;
+}
+
+.footer-top .container > :first-child .footer-text {
+  margin-block: 20px 25px;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+/* Center social icons only in that first column */
+.footer-top .container > :first-child .social-list {
+  justify-content: center;
+}
+
+.footer-link:is(:hover, :focus-visible) {
+  color: var(--text-purple);
+}
+
+.contact-item .span {
+  color: var(--text-purple);
+  font-size: var(--fontSize-7);
+  text-transform: uppercase;
+  font-weight: var(--weight-semiBold);
+}
+
+.contact-item:not(:last-child) {
+  margin-block-end: 15px;
+}
+
+.input-field {
+  background-color: var(--bg-oxford-blue-alpha-90, #1e293b);
+  color: var(--text-white, #fff);
+  font-size: 0.9rem;       /* smaller text size */
+  padding: 10px 14px;      /* slightly reduced padding */
+  border-radius: 8px;      /* rounded rectangle */
+  border: 2px solid var(--border-purple-alpha-30, rgba(155,93,229,0.3));
+  margin-bottom: 15px;
+  outline: none;
+  width: 100%;
+  max-width: 260px;        /* slightly smaller width */
+  box-shadow: var(--shadow, 0 2px 5px rgba(0,0,0,0.2));
+}
+
+.input-field::placeholder {
+  font-size: 1rem;      /* smaller placeholder text */
+  color: var(--text-white, #fff);
+  opacity: 0.8;
+}
+
+.btn {
+  background-image: var(--gradient-1);
+  color: var(--text-white);
+  font-size: var(--fontSize-6);
+  font-weight: var(--weight-semiBold);
+  height: 50px;
+  padding-inline: 30px;
+  clip-path: var(--clip-path-3);
+  transition: transform var(--transition-2);
+}
+
+.footer-bottom {
+  background: seagreen; /* or your gradient */
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+
+  position: absolute;
+  left: 50%;
+  right: 50%; 
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 2rem;
+  width: 100vw;
+
+  padding: 1.5rem 0;
+  text-align: center;
+  z-index: 1;
+}
+
+.copyright {
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--text-white);
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero {
+    padding-top: 8rem;
+  }
+}
+
+#success-message {
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: opacity 0.5s ease; /* smooth fade */
+}
+
+/* Default button style with animated gradient */
+.btn {
+  background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite; /* reuse hero animation */
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* spacing for icon + text */
+  transition: all 0.4s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+/* Hover state: white background, colored text/icon */
+.btn:hover,
+.btn:focus {
+  background: white;
+  color: seagreen; /* or purple if you prefer */
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+/* Icon inside button */
+.btn ion-icon {
+  font-size: 1.2rem;
+  color: inherit; /* matches text color */
+  transition: color 0.3s ease;
+}
+
+.btn:hover ion-icon {
+  color: seagreen; /* icon flips to green on hover */
+}
+
+/* Default icon color inside social links */
+.footer .social-link ion-icon {
+  font-size: 1.2rem;       /* adjust size if needed */            /* make icons white by default */
+  transition: color 0.3s ease;
+}
+
+/* Hover state: keep icons white */
+.footer .social-link:hover ion-icon,
+.footer .social-link:focus ion-icon {
+  color: white;
+}
+
+.social-list {
+  display: flex;
+  gap: 10px;
+  list-style: none;   /* removes bullets */
+  padding: 0;         /* removes default padding */
+  margin: 0;          /* removes default margin */
+}
+
+.social-list li {
+  list-style: none;   /* ensures no markers on li */
 }
 
 
