@@ -5,13 +5,14 @@
   <title>CampusConnect+ Events</title>
   <!-- Reuse your main CSS -->
   <link rel="stylesheet" href="./finalweb.css">
+  <link rel="stylesheet" href="./events.css">
 </head>
 <body>
   <!-- Navigation bar copied from finalweb.html -->
   <nav>
     <div class="logo">
       <a href="./finalweb.html">
-        <img src="./campusconnect.png" alt="CampusConnect+ logo" width="50" height="50">
+        <img src="./campusconnect.png" alt="CampusConnect+ logo" width="200" height="200">
       </a>
     </div>
     <div class="nav-links">
@@ -22,33 +23,34 @@
     </div>
   </nav>
 
-  <!-- Hero section reused -->
-  <div class="hero">
-    <div class="left-colum">
-      <h1>Campus Events</h1>
-      <p>Stay updated on everything happening around campus!</p>
-    </div>
-    <div class="right-colum">
-      <h2>Browse Events</h2>
-      <p>Use filters or search to find what interests you.</p>
-    </div>
-  </div>
+  <!-- Hero section -->
+	<div class="hero">
+	  <div class="hero-content">
+		<h1>Campus Events</h1>
+		<p>Stay updated on everything happening around campus!</p>
 
-  <!-- Filters/Search -->
-  <section class="filters">
-    <input type="text" id="search" placeholder="Search events...">
-    <div class="category-filters">
-      <button class="chip" data-category="Academic">Academic</button>
-      <button class="chip" data-category="Sports">Sports</button>
-      <button class="chip" data-category="Social">Social</button>
-      <button class="chip" data-category="Arts">Arts</button>
-      <button class="chip" data-category="Tech">Tech</button>
-    </div>
-    <select id="sort">
-      <option value="dateAsc">Sort by Date ↑</option>
-      <option value="dateDesc">Sort by Date ↓</option>
-    </select>
-  </section>
+		<div class="search-wrapper">
+		  <input type="text" id="search" placeholder="Search events...">
+		  <button id="searchBtn">Search</button>
+		  <ul id="suggestions"></ul>
+		</div>
+
+    <!-- Filters + Sort below -->
+		<div class="filter-row">
+		  <div class="category-filters">
+			<button class="chip" data-category="Academic">Academic</button>
+			<button class="chip" data-category="Sports">Sports</button>
+			<button class="chip" data-category="Social">Social</button>
+			<button class="chip" data-category="Arts">Arts</button>
+			<button class="chip" data-category="Tech">Tech</button>
+		  </div>
+		  <select id="sort">
+			<option value="dateAsc">Sort by Date ↑</option>
+			<option value="dateDesc">Sort by Date ↓</option>
+		  </select>
+		</div>
+	  </div>
+	</div>
 
   <!-- Events container -->
   <main>
@@ -71,7 +73,7 @@
 
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="./js/storage.js"></script>
-  <script src="./js/events.js"></script>
+  <script src="./storage.js"></script>
+  <script src="./events.js"></script>
 </body>
 </html>
